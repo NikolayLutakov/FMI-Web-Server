@@ -1,0 +1,33 @@
+﻿@using CarShop.Models.ServiceModels.Output
+@model IEnumerable<CarOutputModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<a asp-controller="Home" asp-action="AddCar" class="btn alert-success">Add Car</a>
+
+@if (Model.Count() == 0)
+{
+    <h1>No cars</h1>
+}
+else
+{
+    @foreach (var car in @Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Name: @car.Name</h5>
+                <h5 class="card-title">Make: @car.Make</h5>
+                <h5 class="card-title">Model: @car.Model</h5>
+                <h5 class="card-title">Year: @car.Year</h5>
+                <h5 class="card-title">License Plate: @car.LicensePlate</h5>
+                <h5 class="card-title">Events count: @car.Events.Count()</h5>
+                <a asp-controller="Home" asp-action="EditCar" asp-route-id="@car.Id" class="btn btn-primary">Edit</a>
+                <a asp-controller="Home" asp-action="DeleteCar" asp-route-id="@car.Id" class="btn btn-danger">Delete</a>
+                <a asp-controller="Home" asp-action="ShowEvents" asp-route-id="@car.Id" class="btn btn-secondary">View Events</a>
+            </div>
+        </div>
+    }
+}
+
+

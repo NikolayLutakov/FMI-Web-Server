@@ -1,0 +1,35 @@
+﻿@using CarShop.Models.ServiceModels.Input
+@using CarShop.Models.ServiceModels.Output
+@model EventFormModel
+
+<form method="post">
+    <input type="hidden" name="carId" value=@Model.CarId>
+    <input type="hidden" name="id" value=@Model.Id>
+    <div class="form-group">
+        <label asp-for="Mileage">Mileage</label>
+        <input asp-for="Mileage" placeholder="Enter mileage">
+        <span asp-validation-for="Mileage" style="color: red;"></span> 
+    </div>
+    <div class="form-group">
+        <label asp-for="Comment">Comment</label>
+        <textarea asp-for="Comment" placeholder="Enter coment" rows=3 cols=25></textarea>
+        <span asp-validation-for="Comment" style="color: red;"></span> 
+    </div>
+    <div class="form-group">
+        <label asp-for="IsPeriodic">IsPeriodic</label>
+        <input asp-for="IsPeriodic">
+        <span asp-validation-for="IsPeriodic" style="color: red;"></span> 
+    </div>
+    <div class="form-group">
+        <label asp-for="NextDate">Next Date</label>
+        <input asp-for="NextDate">
+        <span asp-validation-for="NextDate" style="color: red;"></span> 
+    </div>
+     <div class="form-group">
+        <label asp-for="NextMileage">Next Mileage</label>
+        <input asp-for="NextMileage" placeholder="Enter next mileage">
+        <span asp-validation-for="NextMileage" style="color: red;"></span> 
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

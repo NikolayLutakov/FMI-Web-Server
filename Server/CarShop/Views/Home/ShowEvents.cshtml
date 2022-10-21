@@ -1,0 +1,29 @@
+﻿@using CarShop.Models.ViewModels
+@model ShowEventsViewModel
+
+<h1>Events for car name: @Model.Car.Name</h1>
+
+<a asp-controller="Home" asp-action="AddEvent" asp-route-carId="@Model.Car.Id" class="btn alert-success">Add Event</a>
+
+@if(Model.Events.Count() == 0)
+{
+    <h3>No events for this car.</h3>
+}
+else
+{
+    @foreach (var ev in @Model.Events)
+    {
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Date: @ev.Date</h5>
+                <h5 class="card-title">Mileage: @ev.Mileage</h5>
+                <h5 class="card-title">Comment: @ev.Comment</h5>
+                <h5 class="card-title">Is Periodic: @ev.IsPeriodic</h5>
+                <h5 class="card-title">Next Event Date: @ev.NextDate</h5>
+                <h5 class="card-title">Next Event Mileage @ev.NextMileage</h5>
+                <a asp-controller="Home" asp-action="EditEvent" asp-route-id="@ev.Id" class="btn btn-primary">Edit</a>
+                <a asp-controller="Home" asp-action="DeleteEvent" asp-route-evId="@ev.Id" asp-route-carId="@ev.CarId" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    }
+}
